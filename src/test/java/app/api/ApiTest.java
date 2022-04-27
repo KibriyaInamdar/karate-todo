@@ -15,9 +15,9 @@ class ApiTest {
     void testAll() throws Exception {
         ServerConfig config = App.serverConfig("src/main/java/app");
         HttpServer server = HttpServer.config(config).build();
-        Results results = Runner.path("classpath:app/api/simple")
+        Results results = Runner.path("classpath:app/api")
                 .systemProperty("server.port", server.getPort() + "")
-                .parallel(1);
+                .parallel(5);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 
